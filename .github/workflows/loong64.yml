@@ -43,7 +43,8 @@ jobs:
               make
               file bpftool
               ls -lh bpftool
-              make EXTRA_CFLAGS=--static
+              rm -rf bpftool
+              EXTRA_CFLAGS=--static make
               file bpftool
               ls -lh bpftool
             "
@@ -62,7 +63,8 @@ jobs:
               make
               file bpftool
               ls -lh bpftool
-              make EXTRA_CFLAGS=--static
+              rm -rf bpftool
+              EXTRA_CFLAGS=--static make
               file bpftool
               ls -lh bpftool
             "
