@@ -25,6 +25,6 @@ jobs:
       #    password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: make
-        working-directory: src
         run: |
+          cd src
           make
