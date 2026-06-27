@@ -39,7 +39,7 @@ jobs:
             ${{ matrix.os }} \
             bash -c "
               set -e
-              dnf install -y gcc libbpf-devel file zlib-devel
+              dnf install -y gcc libbpf-devel file zlib-devel elfutils-libelf-devel
               make
               file bpftool
               ls -lh bpftool
