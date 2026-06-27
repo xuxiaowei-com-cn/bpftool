@@ -29,4 +29,6 @@ jobs:
       - name: make
         run: |
           cd src
+          sudo apt update
+          sudo apt install -y libelf-dev
           make
