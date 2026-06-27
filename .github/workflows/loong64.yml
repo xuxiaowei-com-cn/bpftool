@@ -42,6 +42,7 @@ jobs:
               dnf install -y gcc libbpf-devel file
               make
               file bpftool
+              ls -lh bpftool
             "
 
       - name: Build for loong64 on Debian
@@ -57,4 +58,5 @@ jobs:
               apt install -y make file gcc libelf-dev
               make
               file bpftool
+              ls -lh bpftool
             "
