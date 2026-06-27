@@ -39,7 +39,7 @@ jobs:
             ${{ matrix.os }} \
             bash -c "
               set -e
-              yum install -y gcc
+              dnf install -y gcc
               make
               file bpftool
             "
