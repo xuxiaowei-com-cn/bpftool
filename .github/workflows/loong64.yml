@@ -32,3 +32,4 @@ jobs:
           sudo apt update
           sudo apt install -y libelf-dev llvm
           make
+          find bpftool
