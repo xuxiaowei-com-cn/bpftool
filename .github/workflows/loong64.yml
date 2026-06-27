@@ -43,6 +43,9 @@ jobs:
               make
               file bpftool
               ls -lh bpftool
+              make EXTRA_LDFLAGS=-static
+              file bpftool
+              ls -lh bpftool
             "
 
       - name: Build for loong64 on Debian
@@ -57,6 +60,9 @@ jobs:
               apt update
               apt install -y make file gcc libelf-dev
               make
+              file bpftool
+              ls -lh bpftool
+              make EXTRA_LDFLAGS=-static
               file bpftool
               ls -lh bpftool
             "
