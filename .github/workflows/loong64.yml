@@ -43,8 +43,9 @@ jobs:
               make
               file bpftool
               ls -lh bpftool
-              bpftool --help || true
-              bpftool --version || true
+              ./bpftool --help || true
+              ./bpftool --version || true
+              make install
               rm -rf bpftool
               EXTRA_CFLAGS=--static make
               file bpftool
@@ -65,8 +66,9 @@ jobs:
               make
               file bpftool
               ls -lh bpftool
-              bpftool --help || true
-              bpftool --version || true
+              ./bpftool --help || true
+              ./bpftool --version || true
+              make install
               rm -rf bpftool
               EXTRA_CFLAGS=--static make
               file bpftool
