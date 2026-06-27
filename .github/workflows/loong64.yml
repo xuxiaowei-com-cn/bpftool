@@ -54,7 +54,7 @@ jobs:
             bash -c "
               set -e
               apt update
-              apt install -y make file
+              apt install -y make file gcc
               make
               file bpftool
             "
