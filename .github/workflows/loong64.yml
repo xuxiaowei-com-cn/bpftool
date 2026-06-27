@@ -38,6 +38,8 @@ jobs:
             -w /workspace/src \
             ${{ matrix.os }} \
             bash -c "
+              set -e
+              yum install -y gcc
               make
               file bpftool
             "
@@ -50,6 +52,9 @@ jobs:
             -w /workspace/src \
             ${{ matrix.os }} \
             bash -c "
+              set -e
+              apt update
+              apt install -y make file
               make
               file bpftool
             "
