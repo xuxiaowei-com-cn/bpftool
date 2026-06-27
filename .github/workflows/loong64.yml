@@ -7,6 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ 'openanolis/anolisos:23.4', 'lcr.loongnix.cn/debian:14' ]
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -26,10 +30,26 @@ jobs:
       #    username: ${{ vars.DOCKER_USERNAME }}
       #    password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: make
+      - name: Build for loong64 on Anolis OS
+        if: contains(matrix.os, 'anolis')
         run: |
-          cd src
-          sudo apt update
-          sudo apt install -y libelf-dev llvm
-          make
-          file bpftool
+          docker run --rm --platform linux/loong64 \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace/src \
+            ${{ matrix.os }} \
+            bash -c "
+              make
+              file bpftool
+            "
+
+      - name: Build for loong64 on Debian
+        if: contains(matrix.os, 'debian')
+        run: |
+          docker run --rm --platform linux/loong64 \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace/src \
+            ${{ matrix.os }} \
+            bash -c "
+              make
+              file bpftool
+            "
